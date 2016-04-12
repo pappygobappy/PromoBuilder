@@ -1,0 +1,15 @@
+<md-dialog>
+    <md-toolbar class="md-toolbar-tools">
+        <h2>Create Promotional</h2>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-datepicker ng-model="promoDate" md-placeholder="Enter date"></md-datepicker>
+            Type: <input ng-model="promoType"></input>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <md-button ng-click="ok()" class="md-primary">Create</md-button>
+    </md-dialog-actions>
+</md-dialog>
+
