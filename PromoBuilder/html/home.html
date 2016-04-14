@@ -1,0 +1,52 @@
+<div style="height:100%">
+	<md-toolbar class="md-toolbar-tools" layout="row">
+		<md-button class="md-icon-button md-primary" aria-label="Settings" ng-click="openLeftMenu()">
+	    	<md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+		</md-button>
+		<h4>Promotional Builder</h4>
+		<span flex></span>
+		<md-button class="md-raised" ng-click="showDialog($event)">Create Promotional +</md-button>
+	</md-toolbar>
+	<div>
+		<md-sidenav class="md-whiteframe-z2" md-component-id="left" class="md-sidenav-left">
+			<md-list>
+				<md-list-item> 
+					<md-button ng-click="showDialog($event)">Create Promotional</md-button>
+				</md-list-item>
+				<md-list-item> 
+					<md-button>Chris</md-button>
+				</md-list-item>
+			</md-list>
+		</md-sidenav>
+		<md-content id="content">
+			<div ng-hide="loaded" layout="column" layout-align="center center">
+				<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+			</div>
+			<md-grid-list md-cols="2" md-cols-sm="3" md-cols-md="4" md-cols-lg="6" md-cols-gt-lg="8" md-row-height="210px">
+				<md-grid-tile ng-repeat="p in promos">
+					<md-card>
+						<div ng-class="date.parse(p.date) < date.now() ? 'promo-card-done' : 'promo-card-progress'" layout="column" layout-align="column start">
+							<md-icon md-svg-icon="node_modules/material-design-icons/file/svg/production/ic_folder_48px.svg"></md-icon>
+						</div>
+						<md-card-header>
+							
+							<md-card-header-text>
+								<span class="md-title">{{p.date}}</span>
+								<span class="md-subhead">{{p.type}}</span>
+							</md-card-header-text>
+						</md-card-header>
+						<md-card-content>
+							<p>
+								
+							</p>
+						</md-card-content>
+						<md-card-actions layout="row" layout-align="end center">
+							<md-button class="md-primary" href="#promo/{{p.$id}}">View</md-button>
+							<md-button>Edit</md-button>
+						</md-card-actions>
+					</md-card>
+				</md-grid-tile>
+			</md-grid-list>
+		</md-content>
+	</div>
+</div>

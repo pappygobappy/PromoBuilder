@@ -1,0 +1,17 @@
+<div ng-controller="PromotionalController">
+	<div ng-hide="!loading" layout="column" layout-align="center center">
+		<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+	</div>
+	<md-toolbar ng-hide="loading" class="md-toolbar-tools" layout="row">
+		<md-button class="md-icon-button md-primary" aria-label="Settings" ng-click="openLeftMenu()">
+	    	<md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+		</md-button>
+		<h4>Promotional Builder</h4>
+		<h4>{{promo.date}} - {{promo.type}}</h4>
+		<span flex></span>
+		<md-button class="md-raised" ng-click="showDialog($event)">Add Student +</md-button>
+	</md-toolbar>
+	<ul>
+		<li ng-repeat="s in students">{{s.name}}&nbsp;{{s.color}}</li>
+	</ul>
+</div>

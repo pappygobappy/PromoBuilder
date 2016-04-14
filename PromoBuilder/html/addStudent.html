@@ -1,0 +1,20 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Add Student</h2>
+        </div>
+    </md-toolbar>
+    <form>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                Name: <input required ng-model="name"></input>
+                Type: <input required ng-model="color"></input>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="cancel()">Cancel</md-button>
+            <md-button type="submit" ng-click="ok()" class="md-primary md-raised">Create</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
+

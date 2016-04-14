@@ -1,70 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello World!</title>
-  <link rel="stylesheet" href="./bower_components/angular-material/angular-material.min.css"/>
-  <script src="./bower_components/angular/angular.js" type="text/javascript" ></script>
-  <script src="./bower_components/angular-animate/angular-animate.js" type="text/javascript" ></script>
-  <script src="./bower_components/angular-aria/angular-aria.js" type="text/javascript" ></script>
-  <script src="./bower_components/angular-material/angular-material.js" type="text/javascript" ></script>
-  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-  <!-- AngularFire -->
-  <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
-  <script src = "js/test.js"></script>
-  
-
-  
-  
-
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PromoBuilder</title>
+	<link rel="stylesheet" href="./bower_components/angular-material/angular-material.min.css"/>
+	<link rel="stylesheet" href="./css/main.css"/>
+	<script src="./bower_components/angular/angular.js" type="text/javascript" ></script>
+	<script src="./bower_components/angular-animate/angular-animate.js" type="text/javascript" ></script>
+	<script src="./bower_components/angular-aria/angular-aria.js" type="text/javascript" ></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="./bower_components/angular-material/angular-material.js" type="text/javascript" ></script>
+	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+	<!-- AngularFire -->
+	<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+	<script src = "js/test.js"></script>
 
 </head>
 <body ng-app="myApp" ng-controller="MyCtrl" layout="column">
-  <md-toolbar class="md-toolbar-tools" layout="row">
-    <h4>Angular Material - Starter App</h4>
-  </md-toolbar>
-  <div flex layout="row">
-    <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
-      <md-list>
-        <md-list-item> 
-          <md-button ng-click="showDialog($event)">Create Promotional</md-button>
-        </md-list-item>
-        <md-list-item> 
-          <md-button>Chris</md-button>
-        </md-list-item>
-      </md-list>
-    </md-sidenav>
-    <md-content flex id="content">
-      <div ng-hide="loaded" layout="row" layout-sm="column" layout-align="space-around">
-        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-      </div>
-      <md-grid-list  md-cols-sm="2" md-cols-md="4" md-cols-lg="6" md-cols-gt-lg="8" md-row-height="200px">
-        <md-grid-tile ng-repeat="p in promos" style="width: 200px; height: 200px;">
-          <md-card>
-              <md-card-title>
-                <md-card-title-text>
-                  <h3 class="md-headline">{{p.date}}</h3>
-                  <span class="md-subhead">{{p.type}}</span>
-                </md-card-title-text>
-              </md-card-title>
-            </md-card>
-        </md-grid-tile>
-      </md-grid-list>
-      <md-list>
-        <md-list-item ng-repeat="p in promos">
-            <md-card>
-              <md-card-title>
-                <md-card-title-text>
-                  <span class="md-headline">{{p.date}}</span>
-                  <span class="md-subhead">{{p.type}}</span>
-                </md-card-title-text>
-              </md-card-title>
-            </md-card>
-        </md-list-item>
-      </md-list>
-    </md-content>
-  </div>
-
-  
+	<div ng-view flex></div>
 </body>
 </html>
