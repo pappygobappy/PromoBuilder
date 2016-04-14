@@ -7,7 +7,36 @@
     <form>
         <md-dialog-content>
             <div class="md-dialog-content">
-                Name: <input required ng-model="name"></input>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>First name</label>
+                    <input ng-model="firstname">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Last name</label>
+                    <input ng-model="lastname">
+                </md-input-container>
+                <md-datepicker ng-model="birthdate" md-placeholder="Birth Date"></md-datepicker>
+                <md-radio-group ng-model="kyudan">
+                    <md-radio-button value="Kyu">Kyu</md-radio-button>
+                    <md-radio-button value="Dan">Dan</md-radio-button?>
+                </md-radio-group>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Testing Rank</label>
+                    <md-select ng-model="testrank" md-on-close="deriveColor()">
+                        <md-option ng-repeat="r in ranks" value="{{r}}">
+                            {{r}}&nbsp;{{kyudan}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Testing Color</label>
+                    <md-select ng-model="testcolor">
+                        <md-option ng-repeat="c in colors" value="{{c}}">
+                            {{c}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
                 Type: <input required ng-model="color"></input>
             </div>
         </md-dialog-content>

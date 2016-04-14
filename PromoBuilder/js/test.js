@@ -1,5 +1,8 @@
 var app = angular.module('myApp', ['firebase', 'ngMaterial', 'ngRoute']);
 
+app.constant("RANKS", ["10th", "9th", "8th", "7th", "6th", "5th", "4th", "3rd", "2nd", "1st"]);
+app.constant("COLORS", ["Yellow", "Blue", "Green", "Purple", "Brown", "Black"]);
+
 app.config(["$routeProvider", function($routeProvider, promotionals){
   $routeProvider.
   when("/home", {
@@ -60,15 +63,22 @@ app.factory("students", ["$firebaseArray", "$firebaseObject", "connection",
     // create a reference to the database where we will store our data
     var ref = new Firebase("https://popping-torch-3108.firebaseio.com/Students");
     var students = $firebaseArray(ref)
-    students.addStudent = function(name, color, promo) {
-      if(connection){
-        var stu = students.$add({
-          name: name,
-          color: color,
+    students.addStudent = function(firstname, lastname, birthdate, kyudan, testrank, testcolor, promo) {
+      if(connection){ 
+        var promoid
+        students.$add({
+          firstname: firstname,
+          lastname: lastname,
+          birthdate: birthdate,
+          applications: {},
         }).then(function(ref){
           var promoref = new Firebase("https://popping-torch-3108.firebaseio.com/Promotionals/"+promo.$id);
           //var firepromo = $firebaseObject(promoref);
-          ref.child('Promotionals/'+promo.$id).set(true);
+          ref.child('applications/'+promo.$id).set({
+            kyudan: kyudan,
+            testrank: testrank,
+            testcolor: testcolor,
+          }); 
           console.log(ref);
           promoref.child("Students").child(ref.key()).set(true)
         });
@@ -122,7 +132,7 @@ app.controller("DialogController", function($scope, $mdDialog, promotionals){
   }
 })
 
-app.controller("PromotionalController", function($scope, $location, $routeParams, $mdDialog, promotionals, students){
+app.controller("PromotionalController", function($scope, $location, $routeParams, $mdDialog, promotionals, students, RANKS){
   $scope.promos = promotionals
   $scope.loading = true;
   $scope.promos.$loaded().then(function() {
@@ -153,14 +163,56 @@ app.controller("PromotionalController", function($scope, $location, $routeParams
   
 })
 
-app.controller("AddStudentCtrl", function($scope, $mdDialog, promo, students){
+app.controller("AddStudentCtrl", function($scope, $mdDialog, promo, students, RANKS, COLORS){
+  $scope.ranks = RANKS;
+  $scope.colors = COLORS;
+  
+  $scope.kyudan = "Kyu";
+
+  
+
   $scope.ok = function(){
-    var name = $scope.name
-    var color = $scope.color
-    students.addStudent(name, color, promo)
+    var firstname = $scope.firstname;
+    var lastname = $scope.lastname;
+    var birthdate = $scope.birthdate.toLocaleDateString();
+    var kyudan = $scope.kyudan;
+    var testrank = $scope.testrank;
+    var testcolor = $scope.testcolor;
+    students.addStudent(firstname, lastname, birthdate, kyudan, testrank, testcolor, promo)
     $mdDialog.hide();
   }
   $scope.cancel = function(){
     $mdDialog.hide();
+  }
+  $scope.deriveColor = function(){
+    console.log($scope.testrank)
+    switch($scope.testrank + " " + $scope.kyudan){
+      case "10th Kyu":
+        color = "Yellow";
+        break;
+      case "9th Kyu":
+      case "8th Kyu":
+        color = "Blue";
+        break;
+      case "7th Kyu":
+      case "6th Kyu":
+        color = "Green";
+        break;
+      case "5th Kyu":
+      case "4th Kyu":
+        color = "Purple";
+        break;
+      case "3rd Kyu":
+      case "2nd Kyu":
+      case "1st Kyu":
+        color = "Brown";
+        break;
+      case "":
+        color = ""
+        break;
+      default:
+        color = "Black";
+    }
+    $scope.testcolor = color;
   }
 })
