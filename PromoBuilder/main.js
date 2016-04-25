@@ -6,6 +6,19 @@ const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
+const shell = require('shell')
+
+var ipc = electron.ipcMain
+var folder = ""
+ipc.on('folder', function (event, arg) {
+  folder = arg
+  console.log(arg)
+});
+
+
+
+
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -17,8 +30,33 @@ function createWindow () {
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 
+
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.session.on('will-download', function(event, item, webContents) {
+    var path = ""
+    if (process.platform == 'win32')
+      path = app.getPath("documents")+"\\PromoBuilder\\"+folder+"\\"
+    else
+      path = app.getPath("documents")+"/PromoBuilder//"+folder+"/"
+    item.setSavePath(path+item.getFilename());
+    /*console.log(path+item.getFilename());
+    console.log(item.getFilename());
+    console.log(item.getTotalBytes());
+    item.on('updated', function() {
+      console.log('Received bytes: ' + item.getReceivedBytes());
+    });*/
+    item.on('done', function(e, state) {
+      if (state == "completed") {
+        //console.log("Download successfully");
+        //localStorage.setItem("test", "poop")
+        //dialog.showOpenDialog(mainWindow, {title: item.getFilename(), defaultPath: '~/Desktop/tmp/'})
+        shell.openItem(path+item.getFilename());
+      } else {
+        //console.log("Download is cancelled or interrupted that can't be resumed");
+      }
+    });
+  });
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
