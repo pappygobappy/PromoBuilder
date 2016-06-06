@@ -143,8 +143,9 @@ app.controller("PromotionalController", function($scope, $location, $routeParams
     var doc = new jsPDF('p', 'mm', 'letter');
     var width = doc.internal.pageSize.width;    
     var height = doc.internal.pageSize.height;
+    ipcRenderer.send("certificates", tab.students, $scope.promo, tab, doc, width, height)
 
-    for (var i = 0, len = tab.students.length; i < len; i++) {
+    /*for (var i = 0, len = tab.students.length; i < len; i++) {
       addCertificate(tab.students[i], $scope.promo, doc, width, height);
       if(i < len-1)
         doc.addPage();
@@ -157,7 +158,7 @@ app.controller("PromotionalController", function($scope, $location, $routeParams
     //doc.text("Paranyan loves jsPDF", 35, 25, "", "", "center");
     //doc.output('datauri');
     doc.save(tab.tab+" Certificates.pdf");
-    $scope.downloading = false;
+    $scope.downloading = false;*/
     
   }
 
@@ -167,13 +168,15 @@ app.controller("PromotionalController", function($scope, $location, $routeParams
     var height = doc.internal.pageSize.height;
     doc.addImage(RANKINGSHEETDATA, 'JPG', -5, -6, width+13 , height + 16);
     var currentRank = tab.students[0].applications[$scope.promo.$id].testrank;
-    doc.setFont("Arial")
+    console.log(doc.getFontList())
+    doc.setFont("arial", "bold")
     doc.setFontSize(28);
     //doc.setFontType("bold");
     doc.text(currentRank+" "+tab.students[0].applications[$scope.promo.$id].kyudan+" "+tab.students[0].applications[$scope.promo.$id].testcolor+" Belt", width/2, 28, "center");
     var count = 1;
     var x = width/2+17;
     var y = 0;
+    doc.setFont("arial", "normal")
     doc.setFontSize(17);
     //doc.setFontStyle("");
     for(var i = 0; i < tab.students.length; i++){
@@ -182,10 +185,12 @@ app.controller("PromotionalController", function($scope, $location, $routeParams
         currentRank = tab.students[i].applications[$scope.promo.$id].testrank;
         doc.addPage();
         doc.addImage(RANKINGSHEETDATA, 'JPG', -5, -6, width+13 , height + 16);
+        doc.setFont("arial", "bold")
         doc.setFontSize(28);
         //doc.setFontType("bold");
         doc.text(currentRank+" "+tab.students[i].applications[$scope.promo.$id].kyudan+" "+tab.students[i].applications[$scope.promo.$id].testcolor+" Belt", width/2, 28, "center");
         doc.setFontSize(17);
+        doc.setFont("arial", "normal")
         //doc.setFontStyle("");
       }
       switch(count){
@@ -206,6 +211,15 @@ app.controller("PromotionalController", function($scope, $location, $routeParams
       count++;
     }
     doc.save(tab.tab+" Judges Packet.pdf")
+  }
+
+  $scope.generateTest = function(tab){
+    var doc = new jsPDF('p', 'mm', 'letter');
+    var width = doc.internal.pageSize.width;    
+    var height = doc.internal.pageSize.height;
+    doc.setLineWidth(2.5);
+    doc.roundedRect(13, 7, 192, 265, 0.25, 0.25);
+    doc.save("test.pdf")
   }
   
 })

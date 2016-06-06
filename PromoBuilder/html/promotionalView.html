@@ -18,6 +18,7 @@
         <md-content id="content">
         	<md-button ng-disabled = "!t.students.length" class="md-raised" ng-click="generateCertificates(t)">Certificates</md-button>
         	<md-button ng-disabled = "!t.students.length" ng-hide = "t.tab == 'All'" class="md-raised" ng-click="generateRankingSheets(t)">Judges Packet</md-button>
+        	<md-button ng-disabled = "!t.students.length" class="md-raised" ng-click="generateTest(t)">Test</md-button>
         	<div ng-hide="!downloading" layout="column" layout-align="center center">
 				<md-progress-circular md-mode="indeterminate"></md-progress-circular>
 			</div>
