@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFire } from 'angularfire2';
 
 @Component({
   selector: 'app-appbar',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public af: AngularFire) { }
 
   ngOnInit() {
   }
