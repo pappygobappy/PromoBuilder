@@ -11,12 +11,11 @@ export class CanActivateGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean{
-    /*return this.af.auth
+    return this.af.auth
     	.map((authState: FirebaseAuthState) => !!authState)
     	.do(authenticated => {
     		if(!authenticated)
-    			this.router.navigate(['loading'])
-    	})*/
-    return true;
+    			this.router.navigate(['welcome'])
+    	})
   }
 }

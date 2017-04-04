@@ -32,7 +32,11 @@ export class AppbarUserComponent implements OnInit {
 
   logout(){
   	this.af.auth.logout()
-  	this.loggedIn = false;
+  	.then((success) =>{
+  		this.loggedIn = false;
+  		this.router.navigate(['welcome']);
+  	})
+  	
   }
 
 }
