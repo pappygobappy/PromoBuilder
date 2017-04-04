@@ -6,11 +6,14 @@ import { MaterialModule } from '@angular/material';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { AppComponent } from './app.component';
+import { routes } from './routes';
 import { LogonComponent } from './ui/logon/logon.component';
 
 import 'hammerjs';
 import { AppbarComponent } from './ui/appbar/appbar.component';
 import { AppbarUserComponent } from './ui/appbar-user/appbar-user.component';
+import { MainComponent } from './containers/main/main.component';
+import { LoadingComponent } from './containers/loading/loading.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyColZ5cH9uWk9_fgEmz8ZzWpfDM7K9ZhYc",
@@ -32,13 +35,16 @@ export const firebaseConfig = {
     LogonComponent,
     AppbarComponent,
     AppbarUserComponent,
+    MainComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
+    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
+    routes
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFire } from 'angularfire2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-appbar-user',
@@ -8,7 +9,7 @@ import { AngularFire } from 'angularfire2';
 })
 export class AppbarUserComponent implements OnInit {
   loggedIn: boolean = false;
-  constructor(public af: AngularFire) { 
+  constructor(public af: AngularFire, private router: Router) { 
   	this.af.auth.subscribe(user => {
   		console.log(user);
   		if(user){
@@ -26,6 +27,7 @@ export class AppbarUserComponent implements OnInit {
   	.then((success) => {
   		this.loggedIn = true;
   	});
+  	this.router.navigate(['loading'])
   }
 
   logout(){
