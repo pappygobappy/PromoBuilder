@@ -1,0 +1,8 @@
+<p>
+  login-component works!
+</p>
+
+<div> {{(af.auth | async)?.auth.displayName}} </div>
+<div><p>{{errorMsg}}</p></div>
+<button (click)="login()" *ngIf="!loggedIn">Login</button>
+<button (click)="logout()">Logout</button>
