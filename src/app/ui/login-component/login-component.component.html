@@ -2,7 +2,15 @@
   login-component works!
 </p>
 
-<div> {{(af.auth | async)?.auth.displayName}} </div>
+
 <div><p>{{errorMsg}}</p></div>
-<button (click)="login()" *ngIf="!loggedIn">Login</button>
-<button (click)="logout()">Logout</button>
+<md-spinner *ngIf="loading"></md-spinner>
+<md-card *ngIf="!loading">
+	<md-card-content>
+		<div> {{(af.auth | async)?.auth.displayName}} </div>
+	</md-card-content>
+	<md-card-footer>
+		<button md-button (click)="login()" *ngIf="!loggedIn">Login</button>
+		<button md-button (click)="logout()">Logout</button>
+	</md-card-footer>
+</md-card>

@@ -12,20 +12,26 @@ export class LoginComponentComponent implements OnInit{
   loginPassword: string ="";
   errorMsg: string = "error";
   loggedIn: boolean = false;
+  loading: boolean = true;
 
   constructor(public af: AngularFire) { 
   	this.af.auth.subscribe(user => {
   		console.log(user);
   		if(user){
   			this.loggedIn = true;
+        this.loading = false;
   			console.log(this.loggedIn);
   		}
   	});
   }
 
   login(){
+    this.loading = true;
   	//console.log(this.af.auth.getAuth())
   	this.af.auth.login()
+    .then((success) => {
+      this.loading = false;
+    })
   	.catch((err) => {
   		console.log(err);
   		this.errorMsg = err.message;
