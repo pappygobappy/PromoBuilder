@@ -6,9 +6,11 @@ import { MaterialModule } from '@angular/material';
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { AppComponent } from './app.component';
-import { LoginComponentComponent } from './ui/login-component/login-component.component';
+import { LogonComponent } from './ui/logon/logon.component';
 
 import 'hammerjs';
+import { AppbarComponent } from './ui/appbar/appbar.component';
+import { AppbarUserComponent } from './ui/appbar-user/appbar-user.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyColZ5cH9uWk9_fgEmz8ZzWpfDM7K9ZhYc",
@@ -27,7 +29,9 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponentComponent,
+    LogonComponent,
+    AppbarComponent,
+    AppbarUserComponent,
   ],
   imports: [
     BrowserModule,

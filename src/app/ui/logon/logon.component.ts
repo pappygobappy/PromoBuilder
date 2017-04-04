@@ -3,10 +3,10 @@ import { AngularFire } from 'angularfire2';
 
 @Component({
   selector: 'app-login-component',
-  templateUrl: './login-component.component.html',
-  styleUrls: ['./login-component.component.css']
+  templateUrl: './logon.component.html',
+  styleUrls: ['./logon.component.css']
 })
-export class LoginComponentComponent implements OnInit{
+export class LogonComponent implements OnInit{
 
   loginEmail: string ="";
   loginPassword: string ="";
@@ -17,9 +17,9 @@ export class LoginComponentComponent implements OnInit{
   constructor(public af: AngularFire) { 
   	this.af.auth.subscribe(user => {
   		console.log(user);
+      this.loading = false;
   		if(user){
   			this.loggedIn = true;
-        this.loading = false;
   			console.log(this.loggedIn);
   		}
   	});

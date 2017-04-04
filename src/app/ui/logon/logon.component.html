@@ -1,0 +1,20 @@
+<p>
+  login-component works!
+</p>
+
+
+<div><p>{{errorMsg}}</p></div>
+<md-grid-list cols="1" rowHeight="200px">
+	<md-grid-tile>
+		<md-spinner *ngIf="loading"></md-spinner>
+		<md-card *ngIf="!loading">
+			<md-card-content>
+				<h2> {{(af.auth | async)?.auth.displayName}} </h2>
+			</md-card-content>
+			<md-card-actions>
+				<button md-button (click)="login()" *ngIf="!loggedIn">Login</button>
+				<button md-button (click)="logout()">Logout</button>
+			</md-card-actions>
+		</md-card>
+	</md-grid-tile>
+</md-grid-list>
