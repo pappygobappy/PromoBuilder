@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFire } from 'angularfire2';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loading',
@@ -8,11 +8,11 @@ import { Location } from '@angular/common';
   styleUrls: ['./loading.component.css']
 })
 export class LoadingComponent implements OnInit {
-  constructor(public af: AngularFire, private location: Location) { 
+  constructor(public af: AngularFire, private router: Router) { 
     this.af.auth.subscribe(user => {
   		console.log(user);
   		if(user){
-  			this.location.back();
+  			this.router.navigate(['']);
   		}
   	});
   }
