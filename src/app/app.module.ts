@@ -14,6 +14,7 @@ import { AppbarComponent } from './ui/appbar/appbar.component';
 import { AppbarUserComponent } from './ui/appbar-user/appbar-user.component';
 import { MainComponent } from './containers/main/main.component';
 import { LoadingComponent } from './containers/loading/loading.component';
+import { CanActivateGuard } from './guard/can-activate.guard';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyColZ5cH9uWk9_fgEmz8ZzWpfDM7K9ZhYc",
@@ -46,7 +47,9 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
     routes
   ],
-  providers: [],
+  providers: [
+    CanActivateGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
