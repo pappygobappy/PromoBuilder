@@ -1,5 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
-body{
-	margin:0;
+@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
+html, body {
+    position: fixed;
+    top: 0; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.sidebar{
+	box-shadow: 3px 0 6px rgba(0,0,0,.24);
+	position: relative;
+}
+
+.btn-add.mat-raised-button{
+	background-color: #F9A825;
+	color:white;
 }

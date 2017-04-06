@@ -1,3 +1,14 @@
-.sidebar{
-	height: 100%;
+.sidebar-footer{
+	position: absolute;
+	width: 100%;
+	bottom: 64px;
+	margin-bottom: 5px;
 }
+
+.add-promo{
+	margin:5%;
+	width:90%;
+	padding-right: 5px;
+	padding-left: 0;
+}
+
