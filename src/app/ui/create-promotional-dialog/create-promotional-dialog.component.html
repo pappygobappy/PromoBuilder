@@ -1,3 +1,22 @@
-<div>
-		Hello Dialog
-</div>
+<form (ngSubmit)="onSubmit()">
+	<div class="create-dialog">
+		<div class="dialog-title" md-dialog-title>
+			<h1 md-dialog-title>Create Promotional</h1>
+		</div>
+		<div md-dialog-content>
+			<md-grid-list cols="2">
+				<md-grid-tile>
+					<md-input-container>
+						<input required [(ngModel)]="promoDate" name="promoDate" mdInput placeholder="Date" value="Date" type="date">
+					</md-input-container>
+				</md-grid-tile>
+				<md-grid-tile>
+					<md-checkbox [(ngModel)]="promoYouthOnly" name="promoYouthOnly">Youth Only</md-checkbox>
+				</md-grid-tile>
+			</md-grid-list>
+		</div>
+		<div class="dialog-actions" md-dialog-actions>
+			<button md-button type="submit">Create</button>
+		</div>
+	</div>
+</form>

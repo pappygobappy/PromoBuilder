@@ -19,6 +19,7 @@ import { WelcomeComponent } from './containers/welcome/welcome.component';
 import { HomeComponent } from './containers/home/home.component';
 import { CreatePromotionalDialogComponent } from './ui/create-promotional-dialog/create-promotional-dialog.component';
 import { SidebarComponent } from './ui/sidebar/sidebar.component';
+import { PromotionalsService } from './services/promotionals.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyColZ5cH9uWk9_fgEmz8ZzWpfDM7K9ZhYc",
@@ -60,6 +61,7 @@ export const firebaseConfig = {
   ],
   providers: [
     CanActivateGuard,
+    PromotionalsService
   ],
   bootstrap: [AppComponent]
 })
