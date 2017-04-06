@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFire } from 'angularfire2';
 import { Router } from '@angular/router';
 
+declare var electron: any;
+
 @Component({
   selector: 'app-appbar-user',
   templateUrl: './appbar-user.component.html',
@@ -19,6 +21,7 @@ export class AppbarUserComponent implements OnInit {
   	});
   }
 
+
   ngOnInit() {
   }
 
@@ -35,6 +38,12 @@ export class AppbarUserComponent implements OnInit {
   	.then((success) =>{
   		this.loggedIn = false;
   		this.router.navigate(['welcome']);
+      console.log(electron.ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
+
+      electron.ipcRenderer.on('asynchronous-reply', (event, arg) => {
+        console.log(arg) // prints "pong"
+      })
+      electron.ipcRenderer.send('asynchronous-message', 'ping')
   	})
   	
   }
