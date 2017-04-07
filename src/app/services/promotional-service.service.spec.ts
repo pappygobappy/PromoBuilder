@@ -5,11 +5,11 @@ import { PromotionalsService } from './promotionals.service';
 describe('PromotionalsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PromotionalServiceService]
+      providers: [PromotionalsService]
     });
   });
 
-  it('should ...', inject([PromotionalServiceService], (service: PromotionalServiceService) => {
+  it('should ...', inject([PromotionalsService], (service: PromotionalsService) => {
     expect(service).toBeTruthy();
   }));
 });

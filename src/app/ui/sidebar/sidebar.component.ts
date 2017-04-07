@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer } from '@angular/core';
 import { MdDialog } from '@angular/material';
 import { CreatePromotionalDialogComponent } from '../../ui/create-promotional-dialog/create-promotional-dialog.component';
 import { PromotionalsService } from '../../services/promotionals.service';
@@ -12,9 +12,11 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
+
+  selectedPromo: string = "";
   promotionals: FirebaseListObservable<any>;
 
-  constructor(public dialog: MdDialog, private promoService: PromotionalsService, private router: Router) { }
+  constructor(public dialog: MdDialog, private promoService: PromotionalsService, private router: Router, private renderer: Renderer) { }
 
   openPromotionalDialog(){
   	let dialogRef = this.dialog.open(CreatePromotionalDialogComponent);
@@ -24,7 +26,8 @@ export class SidebarComponent implements OnInit {
   }
 
   viewPromotional(event, promoId: string){
-    event.target.classList.add("promo-selected");
+    
+    this.selectedPromo = promoId;
     this.router.navigateByUrl("promo/"+promoId)
   }
   

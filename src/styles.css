@@ -14,7 +14,7 @@ html, body {
 
 .sidebar{
 	box-shadow: 3px 0 6px rgba(0,0,0,.24);
-	position: relative;
+	width: 180px;
 }
 
 .btn-add.mat-raised-button{

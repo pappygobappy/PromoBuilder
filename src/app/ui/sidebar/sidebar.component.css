@@ -12,6 +12,13 @@
 	padding-left: 0;
 }
 
-.promo-selected{
-	background-color: blue;
+:host /deep/ .promo-selected{
+	color: #3f51b5;
+	font-weight: 600;
+}
+
+md-list-item{
+	border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: rgba(0,0,0,.06);
 }
