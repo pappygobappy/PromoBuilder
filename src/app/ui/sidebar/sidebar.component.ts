@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
 
 
   selectedPromo: string = "";
+  hoverPromo: string = "";
   promotionals: FirebaseListObservable<any>;
 
   constructor(public dialog: MdDialog, private promoService: PromotionalsService, private router: Router, private renderer: Renderer) { }
@@ -26,9 +27,12 @@ export class SidebarComponent implements OnInit {
   }
 
   viewPromotional(event, promoId: string){
-    
     this.selectedPromo = promoId;
     this.router.navigateByUrl("promo/"+promoId)
+  }
+
+  mouseEnter(event, promoId){
+    this.hoverPromo = promoId;
   }
   
   ngOnInit() {

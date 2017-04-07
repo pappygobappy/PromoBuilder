@@ -15,10 +15,22 @@
 :host /deep/ .promo-selected{
 	color: #3f51b5;
 	font-weight: 600;
+	background: rgba(0,0,0,.03);
+}
+
+:host /deep/ .promo-hover{
+	color: #3f51b5;
+	background: rgba(0,0,0,.03);
+	-webkit-transition: all 100ms linear;
+    -ms-transition: all 100ms linear;
+    transition: all 100ms linear;
 }
 
 md-list-item{
 	border-bottom-width: 1px;
     border-bottom-style: solid;
     border-color: rgba(0,0,0,.06);
+    -webkit-transition: all 100ms linear;
+    -ms-transition: all 100ms linear;
+    transition: all 100ms linear;
 }

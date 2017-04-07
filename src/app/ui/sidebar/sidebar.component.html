@@ -1,7 +1,9 @@
 <md-list>
 	<md-list-item *ngFor="let promo of promotionals | async" 
 	(click)="viewPromotional($event, promo.$key)" 
-	[ngClass]="{'promo-selected': promo.$key === selectedPromo}"
+	(mouseenter)="mouseEnter($event, promo.$key)"
+	(mouseleave)="mouseEnter($event, '')"
+	[ngClass]="{'promo-selected': promo.$key === selectedPromo, 'promo-hover': promo.$key == hoverPromo}"
 	id="{{promo.$key}}"> 
 		{{promo.date}} {{promo.youthOnly}}
 	</md-list-item>
