@@ -1,5 +1,5 @@
 <md-list start>
-	<md-list-item *ngFor="let promo of promotionals | async">{{promo.date}} {{promo.youthOnly}}</md-list-item>
+	<md-list-item *ngFor="let promo of promotionals | async" (click)="viewPromotional($event, promo.$key)"> {{promo.date}} {{promo.youthOnly}}</md-list-item>
 </md-list>
 <div class="sidebar-footer">
 	<button class='add-promo btn-add'  (click)="openPromotionalDialog()" md-raised-button><md-icon>add</md-icon> Promotional</button>

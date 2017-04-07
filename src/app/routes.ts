@@ -5,6 +5,7 @@ import { LoadingComponent } from './containers/loading/loading.component';
 import { WelcomeComponent } from './containers/welcome/welcome.component';
 import { CanActivateGuard } from './guard/can-activate.guard';
 import { HomeComponent } from './containers/home/home.component';
+import { PromotionalViewComponent } from './containers/promotional-view/promotional-view.component';
 
 
 export const routes: ModuleWithProviders= RouterModule.forRoot([
@@ -15,7 +16,13 @@ export const routes: ModuleWithProviders= RouterModule.forRoot([
 		children:[
 			{
 				path:'',
-				component: HomeComponent
+				component: HomeComponent,
+				children:[
+					{
+						path:'promo/:id',
+						component: PromotionalViewComponent
+					}
+				]
 			}
 		]
 	},

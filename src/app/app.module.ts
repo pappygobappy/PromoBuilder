@@ -20,6 +20,7 @@ import { HomeComponent } from './containers/home/home.component';
 import { CreatePromotionalDialogComponent } from './ui/create-promotional-dialog/create-promotional-dialog.component';
 import { SidebarComponent } from './ui/sidebar/sidebar.component';
 import { PromotionalsService } from './services/promotionals.service';
+import { PromotionalViewComponent } from './containers/promotional-view/promotional-view.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyColZ5cH9uWk9_fgEmz8ZzWpfDM7K9ZhYc",
@@ -50,6 +51,7 @@ export const firebaseConfig = {
     HomeComponent,
     CreatePromotionalDialogComponent,
     SidebarComponent,
+    PromotionalViewComponent,
   ],
   imports: [
     BrowserModule,
